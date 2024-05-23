@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js.js"></script>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
-    
+    <h1 id="rps">Rock-Paper-Scissors</h1>
+    <div class="buttons">
+        <button onclick="playgame('rock')">✊</button>
+        <button onclick="playgame('paper')">🤚</button>
+        <button onclick="playgame('scissors')">✌️</button>
+    </div>
+    <div id="playerschoice">Player: </div>
+    <div id="computerschoice">Computer: </div>
+    <div id="roundnumber">Roundnumber: </div>
+    <div id="playerscore">playerscore: </div>
+    <div id="computerscore">computerscore: </div>
+    <div id="tiescore">tiescore: </div>
+
+    <div id="resultdisplay"></div>
+
+    <button onclick="resetgame()">Reset Game</button>
+
+    <script src="js.js"></script>
 </body>
 </html>

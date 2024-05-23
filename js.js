@@ -1,135 +1,71 @@
-choices = ["rock", "paper", "scissors"]
-roundNumber = 0
-computerScore = 0
-humanScore = 0
+let choices = ['rock', 'paper', 'scissors']
+let playerschoice = document.getElementById("playerschoice")
+let computerschoice = document.getElementById("computerschoice")
+let resultdisplay = document.getElementById("resultdisplay")
+let roundnumber = document.getElementById("roundnumber")
+let playerscore = document.getElementById("playerscore")
+let computersscore = document.getElementById("computerscore")
+let tiescore = document.getElementById("tiescore")
+let computerscore = 0
+let humanscore = 0
+let tie = 0
+round = 1
 
-
-// function playgame(){
-//     while (roundNumber <= 4 ) {
-
-//         yourChoice = ""
-        
-//         do {
-//             yourChoice = prompt("what is your choice? ");
-//             if (!choices.includes(yourChoice.toLowerCase())){
-//                 console.log("Invalid Choice Try again")
-//             }
-//         } while (yourChoice === null || !yourChoice || !choices.includes(yourChoice.toLowerCase()))
-        
-
-//         yourChoice = yourChoice.toLowerCase();
-//         computerChoice = choices[Math.floor(Math.random() * 3)]
-
-//         if (yourChoice === computerChoice) {
-//             console.log("This Round is a tie!")
-//             roundNumber++
-//         }
-//         else {
-//             switch(yourChoice){
-//                 case "rock":
-//                     if (computerChoice === "scissors"){
-//                         console.log("You win this Round!")
-//                         humanScore++
-//                         roundNumber++
-//                     }
-//                     else {
-//                         console.log("You Lose this Round!")
-//                         computerScore++
-//                         roundNumber++
-//                     }
-//             }
-//             switch(yourChoice){
-//                 case "paper":
-//                     if (computerChoice === "rock"){
-//                         console.log("You win this Round!")
-//                         humanScore++
-//                         roundNumber++
-//                     }
-//                     else {
-//                         console.log("You Lose this Round!")
-//                         computerScore++
-//                         roundNumber++
-//                     }
-//             }
-//             switch(yourChoice){
-//                 case "scissors":
-//                     if (computerChoice === "paper"){
-//                         console.log("You win this Round!")
-//                         humanScore++
-//                         roundNumber++
-//                     }
-//                     else {
-//                         console.log("You Lose this Round!")
-//                         computerScore++
-//                         roundNumber++
-//                     }
-//             }
-//         }
-//     }
+let playgame = (yourchoice) => {
     
-// }
+    if (round < 6 ){
+        computerchoice = choices[Math.floor(Math.random() * 3)]
 
-let playgame2 = () => {
-    while(roundNumber <= 4 ){
+        result = 
+        yourchoice === computerchoice ? "its A tie!" : 
+        yourchoice === 'rock' && computerchoice === 'scissors' ||
+        yourchoice === 'paper' && computerchoice === 'rock' ||
+        yourchoice === 'scissors' && computerchoice === 'paper' ? 
+        "You Win!" : "You Lose!"
+    
+    
+        result === 'its A tie!' ? tie++ : result === 'You Win!' 
+        ? humanscore++ : computerscore ++ 
+    
+        playerschoice.textContent = 'Player: ' + yourchoice
+        computerschoice.textContent = 'Computer: ' + computerchoice
+        roundnumber.textContent = 'Round Number: ' + round
+        resultdisplay.textContent = result
+        computersscore.textContent = 'Computerscore:  ' + computerscore
+        playerscore.textContent = 'Playerscore:  ' + humanscore
+        tiescore.textContent = 'Tiescore:  ' + tie
+    
+        round++
+    }
+    if (round === 6) {
+        resultdisplay.textContent = 
+    
+        humanscore === computerscore ? "THIS GAME IS A TIE!" : 
+        
+        humanscore >= computerscore ? 'YOU WIN THIS GAME!!' : 'YOU lOSE THIS GAME!!'
+    }
+ 
+    } 
 
-        do {
-        yourChoice = prompt("what is your choice? ");
 
-        if (yourChoice === null) {
-            continue;
-        }
+let resetgame = () => {
+computerscore = 0
+humanscore = 0
+tie = 0
+round = 1
 
-        if (!choices.includes(yourChoice.toLowerCase())){
-            console.log("Invalid Choice Try again")
-        }
-        } while (yourChoice === null || !yourChoice || !choices.includes(yourChoice.toLowerCase()))
-        
-        
-        yourChoice = yourChoice.toLowerCase();
-        computerChoice = choices[Math.floor(Math.random() * 3)]
-        
-        let result = yourChoice === computerChoice ? "Its a Tie!" : 
-        //if its not a tie we need to figure out who won, we list all winning possibiiltes for human, if none of them are true it means computer won.
-        (yourChoice == "rock" && computerChoice == "scissors" || yourChoice == "paper" && computerChoice == "rock" || yourChoice == "scissors" && computerChoice == "paper") ? 
-        (console.log("You Win this round! Computer Picked " + computerChoice + " You picked " + yourChoice),"You win!") 
-        : (console.log("You Lose this round! Computer Picked " + computerChoice + " You picked " + yourChoice),"You Lose!")
-        
-        result == "You win!" ? humanScore++ : computerScore++
-        
-        roundNumber++
-        } 
-        
+playerschoice.textContent = 'Player: ' 
+        computerschoice.textContent = 'Computer: ' 
+        roundnumber.textContent = 'Round Number: ' + 0
+        resultdisplay.textContent = " "
+        computersscore.textContent = 'Computerscore:  ' + 0
+        playerscore.textContent = 'Playerscore:  ' + 0
+        tiescore.textContent = 'Tiescore:  ' + 0
+
 }
 
 
-function countscore(){
-    if (humanScore === computerScore){
-        console.log("This Game Is a Tie! Your Score: "+ humanScore + " Computers Score: " + computerScore)
-    }
-    else if (humanScore >= computerScore) {
-        console.log("You Win this Game! Your Score: "+ humanScore + " Computers Score: " + computerScore)
-    }
-    else {
-        console.log("You Lose this Game! Your Score: "+ humanScore + " Computers Score: " + computerScore)
-    }
-}
-
-
-playgame2();
-countscore();
-prompt("Would You like To Start a New Game?: ")
 
 
 
-
-
-
-
-// upper case/lower case input  XXX
-// and make it so they cant cancel or exit. XXX
-//  also invalid choice thats not in array.
-// ternary
-
-
-
-
+    
